@@ -17,7 +17,7 @@ services:
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
       - "constraint:node==sparkmaster"
-#  spark-worker-2:
+  #  spark-worker-2:
 #    image: bde2020/spark-worker:2.4.0-hadoop2.7
 #    container_name: spark-worker-2
 #    depends_on:
@@ -44,4 +44,5 @@ services:
       - "SPARK_MASTER=spark://spark-master:7077"
       - "constraint:node==sparkmaster"
     volumes:
-      - ${yelp_input_file}:/tmp/yelp.tar
+      - ./py:/tmp/py
+
