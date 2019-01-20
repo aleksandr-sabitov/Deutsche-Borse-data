@@ -6,12 +6,7 @@ RUN wget http://central.maven.org/maven2/com/databricks/spark-csv_2.11/1.5.0/spa
 
 RUN pip3 install boto3
 
-#COPY py/app.py /tmp/app.py
-COPY app/app.sh /tmp/app.sh
-COPY app/convert_to_parquet.sql /tmp/convert_to_parquet.sql
-COPY app/sql_examples.sql /tmp/sql_examples.sql
+COPY app/* /tmp/
 COPY scripts/entrypoint.sh /
-
-
 
 CMD ["/bin/bash", "/entrypoint.sh"]

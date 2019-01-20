@@ -43,6 +43,5 @@ services:
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
       - "constraint:node==sparkmaster"
-    volumes:
-      - ./py:/tmp/py
+
 
