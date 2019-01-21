@@ -1,4 +1,4 @@
-# Deutsche Börse dataset - Spark SQL case (Linux/Mac)
+# Deutsche Börse dataset - Spark SQL case (Linux/Mac/Win with some caveats)
 This repository is used to demo Spark SQL case for Deutsche Börse dataset - https://github.com/Deutsche-Boerse/dbg-pds
 
 #### One time activies - in order to be able to run things
@@ -7,17 +7,20 @@ This repository is used to demo Spark SQL case for Deutsche Börse dataset - htt
 - [Install Docker Compose](https://docs.docker.com/compose/install/) on your machine
 
 #### How it works
-0) ...based on boto3 and Spark docker provided by https://github.com/big-data-europe/docker-spark
+0) ...based on boto3 Python lib and Spark docker provided by https://github.com/big-data-europe/docker-spark
 1) Startup Spark master + one Spark worker in standalone mode (pretening to be Spark cluster)
-2) Startup (customised ) Spark client container ("application") + attach tar-file as docker volume
-3) Loading (incremental) data by boto3 from S3
+2) Startup (customized ) Spark client container ("application")
+3) Loading (incremental) data by boto3 from S3 (using anonymized connection)
 4) Converting CSV formats into Parquet formats using Spark SQL
-5) SQL query that needed result
+5) Running Spark SQL query that generate needed result
+6) Exposing spark-sql console 
 
 #### TODO
-1) add support for date formats
-2) introduce table partitions 
-3) introduce unit-tests on data checks
+0) get rid of hardcoded values
+1) implement incremental load with support from Airflow or implementing some custom increment control
+2) add support for date formats
+3) introduce table partitions 
+4) introduce unit-tests on data checks ()
 
 #### How to use
 Firstly clone this repo to local machine.

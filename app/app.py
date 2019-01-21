@@ -10,8 +10,7 @@ if __name__ == "__main__":
     bucket_name = 'deutsche-boerse-xetra-pds'
 
     s3 = boto3.resource('s3')
-    s3.meta.client.meta.events.register(
-         'choose-signer.s3.*', disable_signing)
+    s3.meta.client.meta.events.register('choose-signer.s3.*', disable_signing)
 
     s3_bucket = s3.Bucket(bucket_name)
 
@@ -20,7 +19,9 @@ if __name__ == "__main__":
 
     os.mkdir('/tmp/deutsche-boerse-xetra-pds')
 
-    for date_prefix in ['2019-01-17','2019-01-18','2019-01-19']:
+
+    # here we pretend to load increment additionally to already available data - but actually for demo purpose only few days of data
+    for date_prefix in ['2019-01-15','2019-01-16','2019-01-17','2019-01-18','2019-01-19']:
 
         s3_response = s3_client.list_objects_v2(
             Bucket = bucket_name,
